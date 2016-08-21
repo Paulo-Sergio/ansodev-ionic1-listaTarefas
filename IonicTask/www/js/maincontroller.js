@@ -1,5 +1,5 @@
 angular.module('starter')
-.controller('mainController', function($scope, $ionicPopup){
+.controller('mainController', function($scope, $ionicPopup, $ionicListDelegate){
 
   var tasks = new getTasks();
 
@@ -23,14 +23,9 @@ angular.module('starter')
     $scope.removeStatus = !$scope.removeStatus;
   };
 
-  $scope.onItemAdd = function(){
-    var item = {
-      nome: "",
-      finalizada: false
-    };
-
+  function getItemPopup(item, novo){
     $scope.data = {};
-    $scope.data.newTask = "";
+    $scope.data.newTask = item.nome;
 
     $ionicPopup.show({
       title: "Nova Tarefa",
@@ -40,11 +35,27 @@ angular.module('starter')
         {text: "Ok",
         onTap: function(e){
           item.nome = $scope.data.newTask;
-          tasks.add(item);
+          if(novo){
+            tasks.add(item);
+          }
         }},
         {text: "Cancel"}
       ]
     });
+
+    $ionicListDelegate.closeOptionButtons();
   };
+
+  $scope.onItemAdd = function(){
+    var item = {
+      nome: "",
+      finalizada: false
+    };
+    getItemPopup(item, true);
+  };
+
+  $scope.onItemEdit = function(item){
+    getItemPopup(item, false);
+  }
 
 });
