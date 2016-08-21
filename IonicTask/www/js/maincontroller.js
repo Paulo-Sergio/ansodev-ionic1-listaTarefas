@@ -23,7 +23,12 @@ angular.module('starter')
     $scope.removeStatus = !$scope.removeStatus;
   };
 
-  function getItemPopup(item){
+  $scope.onItemAdd = function(){
+    var item = {
+      nome: "",
+      finalizada: false
+    };
+
     $scope.data = {};
     $scope.data.newTask = "";
 
@@ -40,14 +45,6 @@ angular.module('starter')
         {text: "Cancel"}
       ]
     });
-  };
-
-  $scope.onItemAdd = function(){
-    var item = {
-      nome: "",
-      finalizada: false
-    };
-    getItemPopup(item);
   };
 
 });
