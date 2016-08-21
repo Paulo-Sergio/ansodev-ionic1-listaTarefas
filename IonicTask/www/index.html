@@ -21,6 +21,7 @@
     <!-- your app's js -->
     <script src="js/app.js"></script>
     <script src="js/maincontroller.js"></script>
+    <script src="js/TaskModel.js"></script>
   </head>
   <body ng-app="starter">
 
@@ -31,7 +32,11 @@
 
       <ion-content ng-controller="mainController">
 
-        
+        <ion-list>
+          <ion-item ng-repeat="item in lista">
+            {{item}}
+          </ion-item>
+        </ion-list>
 
       </ion-content>
     </ion-pane>
