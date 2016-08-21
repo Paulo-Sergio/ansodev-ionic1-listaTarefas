@@ -1,11 +1,18 @@
 //construtor
 function getTasks(){
 
-  this.items = [
-    {nome: 'Item 01', finalizada: false},
-    {nome: 'Item 02', finalizada: false},
-    {nome: 'Item 01', finalizada: false}
-  ];
+  this.items = [];
+
+  var lista = localStorage.getItem("tasklist");
+
+  if(lista !== null){
+    this.items = angular.fromJson(lista);
+  }
+
+  this.save = function(){
+    var lista = angular.toJson(this.items);
+    localStorage.setItem("tasklist", lista);
+  };
 
   this.remove = function(item){
     var pos = this.items.indexOf(item);

@@ -9,6 +9,7 @@ angular.module('starter')
 
   $scope.onMarkTask = function(item){
     item.finalizada = !item.finalizada;
+    tasks.save();
   };
 
   $scope.onHideItem = function(item){
@@ -17,6 +18,7 @@ angular.module('starter')
 
   $scope.onItemRemove = function(item){
     tasks.remove(item);
+    tasks.save();
   };
 
   $scope.onClickRemove = function(){
@@ -38,6 +40,7 @@ angular.module('starter')
           if(novo){
             tasks.add(item);
           }
+          tasks.save();
         }},
         {text: "Cancel"}
       ]
