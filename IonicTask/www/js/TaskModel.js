@@ -12,4 +12,8 @@ function getTasks(){
     this.items.splice(pos, 1);
   };
 
+  this.add = function(item){
+    this.items.push(item);
+  };
+
 }
