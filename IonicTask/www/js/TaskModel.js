@@ -7,4 +7,9 @@ function getTasks(){
     {nome: 'Item 01', finalizada: false}
   ];
 
+  this.remove = function(item){
+    var pos = this.items.indexOf(item);
+    this.items.splice(pos, 1);
+  };
+
 }
