@@ -5,4 +5,8 @@ angular.module('starter')
 
   $scope.lista = tasks.items;
 
+  $scope.onMarkTask = function(item){
+    item.finalizada = !item.finalizada;
+  };
+
 });
